@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<h1><%=fullname%></h1>
+
+<ul><!--List-->
+<% hobbie.forEach(function(hobby){ %>
+    <li> <%= hobby %> </li>
+<% }) %>
+
+<hr>
+<h3><%=bdate%><h3>
+<% include ../partials/footer %>
