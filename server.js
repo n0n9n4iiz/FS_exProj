@@ -1,7 +1,7 @@
 var express = require('express');
 var pgp = require('pg-promise')();//option ;
-//var db = pgp('process.env.DATABASE_URL');
-var db = pgp('postgres://ngrngfvwmjohqq:53c6e42c6c36a1e55cfd9f56460408fb4582eb4b4bfe6ce9f2f95b86a23d5887@ec2-54-243-61-194.compute-1.amazonaws.com:5432/dbka26q0kvcst3?ssl=true ');
+var db = pgp('process.env.DATABASE_URL');
+//var db = pgp('postgres://ngrngfvwmjohqq:53c6e42c6c36a1e55cfd9f56460408fb4582eb4b4bfe6ce9f2f95b86a23d5887@ec2-54-243-61-194.compute-1.amazonaws.com:5432/dbka26q0kvcst3?ssl=true ');
 //ดึง database
 var app = express();
 //ทำให้เป็น json
