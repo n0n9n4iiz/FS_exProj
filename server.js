@@ -96,13 +96,22 @@ app.get('/about',function(req,res){
        var id = req.body.id;
        var title = req.body.title;
        var price = req.body.price;
-       var sql = `Update products set title = ${title}, price = ${price} where id = $(id)`; 
+       var sql = `Update products set title = '${title}', price = '${price}' where id = '${id}'`; 
             //db.none ไม่ต้องส่งอะไรกลับมา
-            console.log('UPDATE : '+sql);
-       res.redirect('/products');
+            db.any(sql)              
+            .then(function(data){ 
+             
+                res.redirect('/products');
+            }) 
+            .catch(function(error){
+                    console.log('ERROR:'+ error);     
+            })  
+        });
+   
+    
         
 
-     })
+     
 
 console.log('App is runnig at http://localhost:8080')
 app.listen(8080);
