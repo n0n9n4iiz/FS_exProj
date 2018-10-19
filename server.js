@@ -106,8 +106,8 @@ app.get('/about',function(req,res){
          })  
      });
 app.get('/products/delete',function(req,res){
-        var id = req.params.id;
-        console.log(id)
+        var id = req.body.id;
+        res.render('pages/product_delete',{id : id});
         //var sql = 'delete from products where id='
 
 })
