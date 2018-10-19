@@ -96,7 +96,7 @@ app.get('/about',function(req,res){
       
         var pid = req.params.pid;
         var sql = "select * from products where id="+pid;
-        var time = moment().local().format()+" (Thailand time)";
+        var time = moment().local().format();
         db.any(sql)              
          .then(function(data){ 
             
@@ -108,7 +108,18 @@ app.get('/about',function(req,res){
      });
 
 app.get('/products/delete/:pid',function(req,res){
-    
+    var pid = req.params.pid;
+    var sql = 'delete from products';
+    if(pid){
+        sql =+ ' where id ="'+pid+'"'
+    }
+    db.any(sql)              
+            .then(function(data){ 
+                res.redirect('/products');
+            }) 
+            .catch(function(error){
+                    console.log('ERROR:'+ error);     
+            }) 
 })
 
      app.post('/products/update',function(req,res){
