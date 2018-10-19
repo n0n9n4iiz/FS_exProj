@@ -105,9 +105,10 @@ app.get('/about',function(req,res){
                  console.log('ERROR:'+ error);     
          })  
      });
-app.get('/products/delete',function(req,res){
-        
-        res.render('pages/product_delete',{product : data[0]});
+
+app.get('/products/delete/:pid',function(req,res){
+        var id = res.params.id
+        res.render('pages/product_delete',{id : id});
         //var sql = 'delete from products where id='
 
 })
