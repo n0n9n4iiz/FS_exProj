@@ -142,20 +142,6 @@ app.get('/users/:id', function (req, res) {
 
 })
 
-app.get('/search',function(req,res){
-    var pid = req.params.Searchtxt;
-    var sql = "select * from products where id like '%"+pid+"%'";
-    db.any(sql)
-        .then(function (data) {
-
-            res.render('/pages/index');
-        })
-        .catch(function (error) {
-            console.log('ERROR: ' + error);
-        })
-})
-
-
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
