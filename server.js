@@ -106,9 +106,9 @@ app.get('/about',function(req,res){
          })  
      });
 
-app.get('/products/delete/:pid',function(req,res){
-        var id = res.params.id
-        res.render('pages/product_delete',{id : id});
+app.get('/products/delete',function(req,res){
+       var id = res.params.products.id;
+       res.render('pages/product_delete',{id : id});
         //var sql = 'delete from products where id='
 
 })
