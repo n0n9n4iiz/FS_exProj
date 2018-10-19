@@ -19,7 +19,7 @@
             <td>$<%= product.price %></td>
             <td><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
                 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="<%=product.id%>">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="<%=product.id%>" name="conD">
         Launch demo modal
       </button>
       
@@ -38,7 +38,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <a class="btn btn-primary" href="/products/delete/<%= product.id%>" role="button">Delete</a>
+             <a class="btn btn-primary" href="/products/delete/<%= conD%>" role="button">Delete</a>
             </div>
           </div>
         </div>
