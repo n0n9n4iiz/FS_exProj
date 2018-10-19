@@ -108,7 +108,7 @@ app.get('/products/:pid', function (req, res) {
 });
 
 app.get('/products/delete/:pid', function (req, res) {
-    var pid = 555;
+    var pid = req.params.pid;
     var sql = 'delete from products';
     if (pid) {
         sql =+ ' where id=' + pid;
@@ -127,7 +127,8 @@ app.post('/products/update', function (req, res) {
     var pid = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `Update products set title = '${title}', price = '${price}' where id = '${pid}'`;
+    var dateEdit = req.body.created_at;
+    var sql = `Update products set title = '${title}', price = '${price}', created_at = '${dateEdit}' where id = '${pid}'`;
     //db.none ไม่ต้องส่งอะไรกลับมา
     db.any(sql)
         .then(function (data) {
