@@ -37,8 +37,10 @@
           ...
         </div>
         <div class="modal-footer">
+                <% products.forEach(function(product){ %>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
           <a name="" id="" class="btn btn-danger" href="/products/delete/<%= product.id %>" role="button">Delete</a>
+          <% }) %>
         </div>
       </div>
     </div>
