@@ -111,7 +111,7 @@ app.get('/products/delete/:pid',function(req,res){
     var pid = req.params.pid;
     var sql = 'delete from products';
     if(pid){
-        sql =+ ' where id ="'+pid+'"'
+        sql =+ ' where id ='+pid;
     }
     db.any(sql)              
             .then(function(data){ 
@@ -124,10 +124,10 @@ app.get('/products/delete/:pid',function(req,res){
 
      app.post('/products/update',function(req,res){
 // โหลด body-parser มา ใช้ข้างบน
-       var id = req.body.id;
+       var pid = req.body.id;
        var title = req.body.title;
        var price = req.body.price;
-       var sql = `Update products set title = '${title}', price = '${price}' where id = '${id}'`; 
+       var sql = `Update products set title = '${title}', price = '${price}' where id = '${pid}'`; 
             //db.none ไม่ต้องส่งอะไรกลับมา
             db.any(sql)              
             .then(function(data){ 
