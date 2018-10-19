@@ -111,9 +111,9 @@ app.get('/products_delete/:pid',function(req,res){
     var pid = req.params.pid;
     var sql = 'delete from products';
     if(pid){
-        sql =+ ' where id ='+pid;
+        sql =+ ' where id='+pid;
     }
-    db.query(sql)              
+    db.any(sql)              
             .then(function(data){ 
                 res.redirect('/products');
             }) 
