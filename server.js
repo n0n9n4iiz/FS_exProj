@@ -16,10 +16,10 @@ app.get('/products/addnewform', function (req, res) {
 
 })
 app.post('/products/addnew', function (req, res) {
-    var id = req.body.id;
+    var pid = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
-    var sql = `insert into products (id,title,price) values ('${id}','${title}','${price}')`;
+    var sql = `insert into products (id,title,price) values ('${pid}','${title}','${price}')`;
     db.any(sql)
         .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
             res.redirect('/products');
