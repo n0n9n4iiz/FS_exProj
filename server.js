@@ -8,15 +8,13 @@ var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
-//app.use(express.static('static'));
-
 app.set('view engine','ejs');
 
 app.get('/products/addnewform',function(req,res){
     res.render('pages/product_Addnew');
 
 })
-app.post('/products/addnew',function(req,res){
+/*app.post('/products/addnew',function(req,res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -29,7 +27,7 @@ app.post('/products/addnew',function(req,res){
                console.log('ERROR:'+ error);     
        })  
 
-})
+})*/
 
 app.get('/',function(req,res){
     res.render('pages/index');
