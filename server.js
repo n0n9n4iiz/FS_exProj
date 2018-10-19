@@ -57,40 +57,6 @@ app.get('/products', function (req, res) { //get ดึงข้อมูล
             console.log('ERROR:' + error);
         })
 });
-//user all
-app.get('/users', function (req, res) { //get ดึงข้อมูล 
-    var id = req.param('id');
-    var sql = 'select * from users';
-    if (id) {
-        sql += ' where id =' + id;
-    }
-    db.any(sql)//any ดึงข้อมูลทั้งหมด               
-        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
-            console.log('DATA:' + data);
-            res.render('pages/users', { users: data });
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-});
-//USERS with id
-app.get('/users/:id', function (req, res) {
-
-    var id = req.params.id
-    var sql = 'select * from users';
-    if (id) {
-        sql += ' where id =' + id;
-    }
-    db.any(sql)
-        .then(function (data) {
-
-            res.render('pages/users', { users: data });
-        })
-        .catch(function (error) {
-            console.log('ERROR: ' + error);
-        })
-
-})
 //09/24/61
 app.get('/products/:pid', function (req, res) {
 
@@ -137,7 +103,40 @@ app.post('/products/update', function (req, res) {
         })
 
 });
+ //user
+app.get('/users', function (req, res) { //get ดึงข้อมูล 
+    var id = req.param('id');
+    var sql = 'select * from users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)//any ดึงข้อมูลทั้งหมด               
+        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
+            console.log('DATA:' + data);
+            res.render('pages/users', { users: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+//USERS with id
+app.get('/users/:id', function (req, res) {
 
+    var id = req.params.id
+    var sql = 'select * from users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/users', { users: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR: ' + error);
+        })
+
+})
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
     console.log('App is running on http://localhost:' + port);
