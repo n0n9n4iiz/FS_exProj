@@ -26,7 +26,7 @@ app.get('/about',function(req,res){
     app.get('/products',function(req,res){ //get ดึงข้อมูล 
        // res.redirect('/about');         //res ส่งข้อมูลไปยังบราวเซอ  dowload ส่งไฟไปให้โหลด, redirect กลับไปหน้า...
      var id = req.param('id');
-     var sql = 'select * from products';
+     var sql = 'select * from products order by id';
      if(id){
             sql += ' where id ='+id;
      }
@@ -105,7 +105,8 @@ app.get('/about',function(req,res){
             }) 
             .catch(function(error){
                     console.log('ERROR:'+ error);     
-            })  
+            }) 
+            
         });
    
         var port = process.env.PORT || 8080;
