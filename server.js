@@ -108,10 +108,10 @@ app.get('/products/:pid', function (req, res) {
 });
 
 app.get('/products/delete/:pid', function (req, res) {
-    var pid = req.params.pid;
+    var pid = 555;
     var sql = 'delete from products';
     if (pid) {
-        sql = + ' where id=' + pid;
+        sql =+ ' where id=' + pid;
     }
     db.any(sql)
         .then(function (data) {
