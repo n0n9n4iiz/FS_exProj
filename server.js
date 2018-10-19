@@ -76,8 +76,10 @@ app.get('/products/:pid', function (req, res) {
 app.get('/products/delete/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = 'delete from products where id=' + pid;
-    var confirm = Boolean;
-    if(confirm == true){
+    var confirm = req.params.confirm;
+    var confirm =+ req.params.yes;
+    var confirm =+ req.params.no;
+    if(confirm){
     db.any(sql)
         .then(function (data) {
             res.redirect('/products');
