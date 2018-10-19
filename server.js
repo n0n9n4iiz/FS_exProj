@@ -73,9 +73,13 @@ app.get('/products/:pid', function (req, res) {
         })
 });
 
-app.get('/products/delete/:pid/:conD', function (req, res) {
+app.get('/products/delete/:pid', function (req, res) {
     var pid = req.params.pid;
-    var conD = req.params.conD
+
+})
+app.get('/products/delete/:conD', function (req, res) {
+    var conD = req.params.conD;
+    
     var sql = 'delete from products where id=' + conD;
    
     db.any(sql)
