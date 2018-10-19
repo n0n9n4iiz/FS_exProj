@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.set('view engine','ejs');
 
 app.get('/products/addnewform',function(req,res){
-    res.render('pages/product_Addnew')
+    res.render('pages/product_Addnew');
 
 })
 app.post('/products/addnew',function(req,res){
