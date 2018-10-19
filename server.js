@@ -12,6 +12,25 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 app.set('view engine','ejs');
 
+app.get('/products/addnewform',function(req,res){
+    res.render('pages/products_Addnew')
+
+})
+app.post('/products/addnew',function(req,res){
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `insert into products (id,title,price) value ('${id}','${title}','${price}')`;
+      db.any(sql)              
+       .then(function(data){ //ทำหลังจากดีงฐานข้อมูล
+           res.render('pages/products');
+       }) 
+       .catch(function(error){
+               console.log('ERROR:'+ error);     
+       })  
+
+})
+
 app.get('/',function(req,res){
     res.render('pages/index');
 });
