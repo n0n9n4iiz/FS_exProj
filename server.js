@@ -8,144 +8,144 @@ var app = express();
 var bodyParser = require('body-parser');
 var moment = require('moment'); //time 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : true}));
-app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
-app.get('/products/addnewform',function(req,res){
+app.get('/products/addnewform', function (req, res) {
     res.render('pages/product_Addnew');
 
 })
-app.post('/products/addnew',function(req,res){
+app.post('/products/addnew', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
     var sql = `insert into products (id,title,price) values ('${id}','${title}','${price}')`;
-      db.any(sql)              
-       .then(function(data){ //ทำหลังจากดีงฐานข้อมูล
-           res.redirect('/products');
-       }) 
-       .catch(function(error){
-               console.log('ERROR:'+ error);     
-       })  
+    db.any(sql)
+        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
+            res.redirect('/products');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
 
 })
 
-app.get('/',function(req,res){
+app.get('/', function (req, res) {
     res.render('pages/index');
 });
 
-app.get('/about',function(req,res){
+app.get('/about', function (req, res) {
     var name = 'krittayot';
-    var hobbie =['1','2','3'];
+    var hobbie = ['1', '2', '3'];
     var bdate = '12/12/2541';
-    res.render('pages/about',{fullname : name,hobbie : hobbie,bdate : bdate});
+    res.render('pages/about', { fullname: name, hobbie: hobbie, bdate: bdate });
 });
 //progreSQL //Display all products
-    app.get('/products',function(req,res){ //get ดึงข้อมูล 
-       // res.redirect('/about');         //res ส่งข้อมูลไปยังบราวเซอ  dowload ส่งไฟไปให้โหลด, redirect กลับไปหน้า...
-     var id = req.param('id');
-     var sql = 'select * from products order by id';
-     if(id){
-            sql += ' where id ='+id;
-     }
-       db.any(sql)//any ดึงข้อมูลทั้งหมด               
-        .then(function(data){ //ทำหลังจากดีงฐานข้อมูล
-            console.log('DATA:'+ data);
-            res.render('pages/products',{products : data});
-        }) 
-        .catch(function(error){
-                console.log('ERROR:'+ error);     
-        })  
-     });
-     //user all
-     app.get('/users',function(req,res){ //get ดึงข้อมูล 
-      var id = req.param('id');
-      var sql = 'select * from users';
-      if(id){
-             sql += ' where id ='+id;
-      }
-        db.any(sql)//any ดึงข้อมูลทั้งหมด               
-         .then(function(data){ //ทำหลังจากดีงฐานข้อมูล
-             console.log('DATA:'+ data);
-             res.render('pages/users',{users : data});
-         }) 
-         .catch(function(error){
-                 console.log('ERROR:'+ error);     
-         })  
-      });
-    //USERS with id
-     app.get('/users/:id',function(req,res){
-       
-        var id =  req.params.id
-         var sql = 'select * from users';
-         if(id){
-             sql+=' where id ='+id;
-         }
-        db.any(sql)
-        .then(function(data){
-            
-            res.render('pages/users',{users : data});
+app.get('/products', function (req, res) { //get ดึงข้อมูล 
+    // res.redirect('/about');         //res ส่งข้อมูลไปยังบราวเซอ  dowload ส่งไฟไปให้โหลด, redirect กลับไปหน้า...
+    var pid = req.param('id');
+    var sql = 'select * from products order by id';
+    if (pid) {
+        sql += ' where id =' + pid;
+    }
+    db.any(sql)//any ดึงข้อมูลทั้งหมด               
+        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
+            console.log('DATA:' + data);
+            res.render('pages/products', { products: data });
         })
-        .catch(function(error){
-            console.log('ERROR: '+error);
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+//user all
+app.get('/users', function (req, res) { //get ดึงข้อมูล 
+    var id = req.param('id');
+    var sql = 'select * from users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)//any ดึงข้อมูลทั้งหมด               
+        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
+            console.log('DATA:' + data);
+            res.render('pages/users', { users: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+//USERS with id
+app.get('/users/:id', function (req, res) {
+
+    var id = req.params.id
+    var sql = 'select * from users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/users', { users: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR: ' + error);
         })
 
-     })
-     //09/24/61
-     app.get('/products/:pid',function(req,res){
-      
-        var pid = req.params.pid;
-        var sql = "select * from products where id="+pid;
-        var time = moment().format();
-        db.any(sql)              
-         .then(function(data){ 
-            
-             res.render('pages/productedit',{product : data[0],time : time});
-         }) 
-         .catch(function(error){
-                 console.log('ERROR:'+ error);     
-         })  
-     });
+})
+//09/24/61
+app.get('/products/:pid', function (req, res) {
 
-app.get('/products_delete/:pid',function(req,res){
+    var pid = req.params.pid;
+    var sql = "select * from products where id=" + pid;
+    var time = moment().format();
+    db.any(sql)
+        .then(function (data) {
+
+            res.render('pages/productedit', { product: data[0], time: time });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+});
+
+app.get('/products/delete/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = 'delete from products';
-    if(pid){
-        sql =+ ' where id='+pid;
+    if (pid) {
+        sql = + ' where id=' + pid;
     }
-    db.any(sql)              
-            .then(function(data){ 
-                res.redirect('/products');
-            }) 
-            .catch(function(error){
-                    console.log('ERROR:'+ error);     
-            }) 
+    db.any(sql)
+        .then(function (data) {
+            res.redirect('/products');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
 })
 
-     app.post('/products/update',function(req,res){
-// โหลด body-parser มา ใช้ข้างบน
-       var pid = req.body.id;
-       var title = req.body.title;
-       var price = req.body.price;
-       var sql = `Update products set title = '${title}', price = '${price}' where id = '${pid}'`; 
-            //db.none ไม่ต้องส่งอะไรกลับมา
-            db.any(sql)              
-            .then(function(data){ 
-             
-                res.redirect('/products');
-            }) 
-            .catch(function(error){
-                    console.log('ERROR:'+ error);     
-            }) 
-            
-        });
-   
-        var port = process.env.PORT || 8080;
-        app.listen(port, function() {
-            console.log('App is running on http://localhost:' + port);
-            });
+app.post('/products/update', function (req, res) {
+    // โหลด body-parser มา ใช้ข้างบน
+    var pid = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `Update products set title = '${title}', price = '${price}' where id = '${pid}'`;
+    //db.none ไม่ต้องส่งอะไรกลับมา
+    db.any(sql)
+        .then(function (data) {
 
-     
+            res.redirect('/products');
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+
+var port = process.env.PORT || 8080;
+app.listen(port, function () {
+    console.log('App is running on http://localhost:' + port);
+});
+
+
 
 //console.log('App is runnig at http://localhost:8080')
 //app.listen(8080);
