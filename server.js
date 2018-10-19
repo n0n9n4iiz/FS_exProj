@@ -6,6 +6,7 @@ var db = pgp('postgres://ngrngfvwmjohqq:53c6e42c6c36a1e55cfd9f56460408fb4582eb4b
 var app = express();
 //ทำให้เป็น json
 var bodyParser = require('body-parser');
+var moment = require('moment'); //time 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 app.set('view engine','ejs');
@@ -95,11 +96,11 @@ app.get('/about',function(req,res){
       
         var pid = req.params.pid;
         var sql = "select * from products where id="+pid;
-
+        var time = moment().format();
         db.any(sql)              
          .then(function(data){ 
             
-             res.render('pages/productedit',{product : data[0]});
+             res.render('pages/productedit',{product : data[0],time : time});
          }) 
          .catch(function(error){
                  console.log('ERROR:'+ error);     
@@ -107,17 +108,7 @@ app.get('/about',function(req,res){
      });
 
 app.get('/products/delete/:pid',function(req,res){
-       
-        //var sql = 'delete from products where id='
-        var pid = req.params.pid;
-        var sql = 'delete from product where id="'+pid+'"';
-        db.any(sql)              
-        .then(function(data){ 
-            res.redirect('/products')
-        }) 
-        .catch(function(error){
-                console.log('ERROR:'+ error);     
-        })  
+    
 })
 
      app.post('/products/update',function(req,res){
