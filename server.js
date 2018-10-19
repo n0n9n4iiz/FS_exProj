@@ -14,7 +14,7 @@ app.get('/products/addnewform',function(req,res){
     res.render('pages/product_Addnew');
 
 })
-/*app.post('/products/addnew',function(req,res){
+app.post('/products/addnew',function(req,res){
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -27,7 +27,7 @@ app.get('/products/addnewform',function(req,res){
                console.log('ERROR:'+ error);     
        })  
 
-})*/
+})
 
 app.get('/',function(req,res){
     res.render('pages/index');
