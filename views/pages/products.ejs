@@ -37,7 +37,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-          <a name="" id="" class="btn btn-danger" href="/products/delete/<%= product.id %>" role="button">Delete</a>
+          <a name="" id="" class="btn btn-danger" href="/products/delete/<% products.forEach(function(product){ %><%= product.id %><% }) %>" role="button">Delete</a>
         </div>
       </div>
     </div>
