@@ -127,8 +127,8 @@ app.post('/products/update', function (req, res) {
     var pid = req.body.pid;
     var title = req.body.title;
     var price = req.body.price;
-    var dateEdit = req.body.created_at;
-    var sql = `Update products set title = '${title}', price = '${price}', created_at = '${dateEdit}' where id = '${pid}'`;
+    //var dateEdit = req.body.created_at;
+    var sql = `Update products set title = '${title}', price = '${price}' where id = '${pid}'`;
     //db.none ไม่ต้องส่งอะไรกลับมา
     db.any(sql)
         .then(function (data) {
