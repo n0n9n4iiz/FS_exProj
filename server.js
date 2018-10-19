@@ -106,11 +106,18 @@ app.get('/about',function(req,res){
          })  
      });
 
-app.get('/products/delete',function(req,res){
-       var id = res.params.products.id;
-       res.render('pages/product_delete',{id : id});
+app.get('/products/delete/:pid',function(req,res){
+       
         //var sql = 'delete from products where id='
-
+        var pid = req.params.pid;
+        var sql = 'delete from product where id="'+pid+'"';
+        db.any(sql)              
+        .then(function(data){ 
+            res.redirect('/products')
+        }) 
+        .catch(function(error){
+                console.log('ERROR:'+ error);     
+        })  
 })
 
      app.post('/products/update',function(req,res){
