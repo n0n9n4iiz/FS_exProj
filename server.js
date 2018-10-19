@@ -98,7 +98,7 @@ app.get('/about',function(req,res){
 
         db.any(sql)              
          .then(function(data){ 
-             console.log('DATA:'+ data);
+             console.log('DATA:'+ products.id);
              res.render('pages/productedit',{product : data[0]});
          }) 
          .catch(function(error){
