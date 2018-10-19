@@ -79,7 +79,7 @@ app.get('/products/delete/:pid', function (req, res) {
     var confirm = req.params.confirm;
     var confirm =+ req.params.yes;
     var confirm =+ req.params.no;
-    if(confirm){
+    if(confirm == confirmyes){
     db.any(sql)
         .then(function (data) {
             res.redirect('/products');
@@ -88,6 +88,7 @@ app.get('/products/delete/:pid', function (req, res) {
             console.log('ERROR:' + error);
         })
     }
+    var confirm = req.params.confirm;
 })
 
 app.post('/products/update', function (req, res) {
