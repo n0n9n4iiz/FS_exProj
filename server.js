@@ -105,8 +105,12 @@ app.get('/about',function(req,res){
                  console.log('ERROR:'+ error);     
          })  
      });
+app.get('/products/delete',function(req,res){
+        var id = req.params.id;
+        console.log(id)
+        //var sql = 'delete from products where id='
 
-
+})
 
      app.post('/products/update',function(req,res){
 // โหลด body-parser มา ใช้ข้างบน
