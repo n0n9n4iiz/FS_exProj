@@ -16,7 +16,7 @@ app.get('/products/addnewform', function (req, res) {
 
 })
 app.post('/products/addnew', function (req, res) {
-    var pid = req.body.id;
+    var pid = req.body.pid;
     var title = req.body.title;
     var price = req.body.price;
     var sql = `insert into products (id,title,price) values ('${pid}','${title}','${price}')`;
@@ -124,7 +124,7 @@ app.get('/products/delete/:pid', function (req, res) {
 
 app.post('/products/update', function (req, res) {
     // โหลด body-parser มา ใช้ข้างบน
-    var pid = req.body.id;
+    var pid = req.body.pid;
     var title = req.body.title;
     var price = req.body.price;
     var dateEdit = req.body.created_at;
