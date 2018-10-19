@@ -96,7 +96,7 @@ app.get('/about',function(req,res){
       
         var pid = req.params.pid;
         var sql = "select * from products where id="+pid;
-        var local = moment.utc(date).local().format();
+        var local = moment.local().format();
         db.any(sql)              
          .then(function(data){ 
             
