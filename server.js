@@ -96,8 +96,7 @@ app.get('/about',function(req,res){
       
         var pid = req.params.pid;
         var sql = "select * from products where id="+pid;
-        var HH =+ 7;
-        var time = moment().local().format('YYYY-MM-DD '+HH+':mm:ss');
+        var time = moment().local().format()+" (Thailand time)";
         db.any(sql)              
          .then(function(data){ 
             
