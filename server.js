@@ -113,7 +113,7 @@ app.get('/products/delete/:pid',function(req,res){
     if(pid){
         sql =+ ' where id ='+pid;
     }
-    db.any(sql)              
+    db.query(sql)              
             .then(function(data){ 
                 res.redirect('/products');
             }) 
