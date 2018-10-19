@@ -21,7 +21,7 @@ app.post('/products/addnew',function(req,res){
     var sql = `insert into products (id,title,price) values ('${id}','${title}','${price}')`;
       db.any(sql)              
        .then(function(data){ //ทำหลังจากดีงฐานข้อมูล
-           res.render('pages/products');
+           res.redirect('pages/products');
        }) 
        .catch(function(error){
                console.log('ERROR:'+ error);     
