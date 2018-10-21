@@ -176,6 +176,9 @@ app.get('/report/productPurchaser',function(req,res){
  
  })
 
+ app.get('/product',function(req,res){
+ res.render('pages/product')
+ })
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
