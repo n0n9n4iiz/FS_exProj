@@ -149,7 +149,7 @@ app.get('/report/productPurchases',function(req,res){
     ' order by totalprice desc';
     db.any(sql)
         .then(function (data) {
-            res.render('pages/reportPurchase', { reportPChase: data[0] });
+            res.render('pages/reportPurchase', { reportPChase: data });
             console.log(data);
         })
         .catch(function (error) {
