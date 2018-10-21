@@ -149,15 +149,17 @@ app.get('/report/productPurchases',function(req,res){
     ' order by totalprice desc';
     db.any(sql)
         .then(function (data) {
-            console.log("DATA: "+data);
            // res.render('pages/reportPurchase', { reportPChase: data });
-           var datafirst = data;
+            var datafirst = data;
             var sql1 = 'select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from products inner join purchase_items on products.id = purchase_items.product_id';
             db.any(sql1)
             .then(function(data){
                 var datasecd = data;
                 res.render('pages/reportPurchase', { reportPChase: datafirst,reportPChase1: datasecd });
             })
+            .catch(function (error) {
+                console.log('ERROR:' + error);
+            }) 
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
