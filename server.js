@@ -150,6 +150,7 @@ app.get('/report/productPurchases',function(req,res){
     db.any(sql)
         .then(function (data) {
             res.render('pages/reportPurchase', { reportPChase: data[0] });
+            console.log(data);
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
