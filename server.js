@@ -144,25 +144,18 @@ app.get('/users/:id', function (req, res) {
 
 //reprotPChase
 app.get('/report/productPurchases',function(req,res){
- /*  var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
+   var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
     ' group by title,products.price'+
     ' order by totalprice desc';
     db.any(sql)
         .then(function (data) {
-            res('pages/reportPurchase', { reportPChase: data });
+            res.render('pages/reportPurchase', { reportPChase: data });
          
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-        }) */
-    var sql1 = 'select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from products inner join purchase_items on products.id = purchase_items.product_id';
-    db.any(sql1)
-        .then(function(data){
-            res.render('pages/reportPurchase', { reportPChaseone: data });
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
         }) 
+  
 
 })
 
