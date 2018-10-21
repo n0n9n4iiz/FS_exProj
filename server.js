@@ -152,10 +152,11 @@ app.get('/report/productPurchases',function(req,res){
             console.log("DATA: "+data);
            // res.render('pages/reportPurchase', { reportPChase: data });
            var datafirst = data;
-            var sql1 = ' select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from products inner join purchase_items on products.id = purchase_items.product_id';
+            var sql1 = 'select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from products inner join purchase_items on products.id = purchase_items.product_id';
             db.any(sql1)
             .then(function(data){
-                res.render('pages/reportPurchase', { reportPChase: datafirst,reportPChase1: data });
+                var datasecd = data;
+                res.render('pages/reportPurchase', { reportPChase: datafirst,reportPChase1: datasecd });
             })
         })
         .catch(function (error) {
