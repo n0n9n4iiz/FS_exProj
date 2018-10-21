@@ -146,7 +146,7 @@ app.get('/users/:id', function (req, res) {
 app.get('/report/productPurchases',function(req,res){
    var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
     ' group by title,products.price'+
-    ' order by totalprice desc';
+    ' order by title ';
     db.any(sql)
         .then(function (data) {
             res.render('pages/reportPurchase', { reportPChase: data });
@@ -176,9 +176,7 @@ app.get('/report/productPurchaser',function(req,res){
  
  })
 
- app.get('/product',function(req,res){
- res.render('pages/product')
- })
+ 
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
