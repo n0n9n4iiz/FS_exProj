@@ -4,10 +4,10 @@
 
     <thead>
         <tr class="row">
-            <th class="col-md-3 col-sm-3 ">ID</th>
-            <th class="col-md-3 col-sm-3">Title</th>
-            <th class="col-md-3 col-sm-3">Price</th>
-            <th class="col-md-3 col-sm-3"><a name="" id="" class="btn btn-primary" href="/products/addnewform" role="button">Add new</a></th>
+            <th class="col-3 col-sm-3 ">ID</th>
+            <th class="col-3 col-sm-3">Title</th>
+            <th class="col-3 col-sm-3">Price</th>
+            <th class="col-3 col-sm-3"><a name="" id="" class="btn btn-primary" href="/products/addnewform" role="button">Add new</a></th>
         </tr>
     </thead>
 
@@ -17,7 +17,7 @@
             <td scope="row" class="col-md-3 col-sm-4 col-4"><%= product.id %></td>
             <td class="col-md-3 col-sm-4 col-4"><%= product.title %></td>
             <td class="col-md-3 col-sm-4 col-4">$<%= product.price %></td>
-            <td class="col-md-3 col-sm-12 col-12"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
+            <td class="col-md-3 col-sm-12 col-12" style="text-align: center;"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
                 <!-- Button trigger modal -->
 <a href="<%=product.id%>"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"   >
         Delete
