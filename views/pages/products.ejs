@@ -1,47 +1,28 @@
 <% include ../partials/header %>
-<script> 
-    $(document).ready(function(){
-        $("#flip").click(function(){
-            $("#panel").slideToggle("slow");
-        });
-    });
-    </script>
-    <style> 
-        #panel, #flip {
-            padding: 5px;
-            text-align: center;
-            background-color: #e5eecc;
-            border: solid 1px #c3c3c3;
-        }
-        
-        #panel {
-            padding: 50px;
-            display: none;
-        }
-        </style>
-        <div id="flip">
-<table >
+
+<table class="table">
     <thead>
         <tr class="row"">
             <th class="col-3 col-sm-3 ">ID</th>
             <th class="col-3 col-sm-3">Title</th>
             <th class="col-3 col-sm-3">Price</th>
+            <th class="col-3 col-sm-3"><a name="" id="" class="btn btn-primary" href="/products/addnewform" role="button">Add new</a></th>
             </tr>
     </thead>
-<!--
+
     <tbody id="Sproduct">
     <% products.forEach(function(product){ %>
       <tr class="row">
-            <td scope="row" class="col-sm-3 col-4"><%= product.id %></td>
-            <td class="col-sm-3 col-4"><%= product.title %></td>
-            <td class="col-sm-3 col-4">$<%= product.price %></td>
+            <td scope="row" class="col-sm-3 col-3"><%= product.id %></td>
+            <td class="col-sm-3 col-3"><%= product.title %></td>
+            <td class="col-sm-3 col-3">$<%= product.price %></td>
             <td class="col-sm-3 col-12" style="text-align: center;"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
-               
+                <!-- Button trigger modal -->
 <a href="<%=product.id%>"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"   >
         Delete
       </button></a>
       
-     
+      <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" >
           <div class="modal-content">
@@ -66,10 +47,8 @@
       </tr>
     <% }) %>
     </tbody>
-  -->
+
 </table>
-</div>
-<div id="panel"><th class="col-3 col-sm-3"><a name="" id="" class="btn btn-primary" href="/products/addnewform" role="button">Add new</a></th></div>
 
 <script>
     $(document).ready(function(){
