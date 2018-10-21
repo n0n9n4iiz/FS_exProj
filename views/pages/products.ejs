@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<table class="table">
+<!--<table class="table">
     <thead>
         <tr class="row"">
             <th class="col-3 col-sm-3 ">ID</th>
@@ -8,6 +8,23 @@
             <th class="col-3 col-sm-3">Price</th>
             <th class="col-3 col-sm-3"><a name="" id="" class="btn btn-primary" href="/products/addnewform" role="button">Add new</a></th>
             </tr>
+          -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <p class="navbar-brand col-3" >ID</p>
+                <p class="navbar-brand col-3" >TITLE</p>
+                <p class="navbar-brand col-3" >PRICE</p>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-angle-down"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                      <a  class="btn btn-primary" href="/products/addnewform" role="button">Add new</a> <span class="sr-only">(current)</span>
+                    </li>           
+                  </ul>
+                </div>
+              </nav>
     </thead>
 
     <tbody id="Sproduct">
