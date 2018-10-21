@@ -3,7 +3,6 @@
 
 <table class="table">
     <thead>
-    <tr>
     <th>USER ID</th>
     <th>NAME</th>
     <th>QUANTITY</th>
@@ -16,7 +15,7 @@
         <% reportPChaser.forEach(function(reportPChaser){ %>
                 <td scope="row"><%= reportPChaser.id %></td>
                 <td><%= reportPChaser.name %></td>
-                <td>$<%= reportPChaser.quantity %></td>
+                <td><%= reportPChaser.quantity %></td>
                 <td>$<%= reportPChaser.totalprice %></td>
                 
 </tr>
