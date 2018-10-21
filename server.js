@@ -142,6 +142,21 @@ app.get('/users/:id', function (req, res) {
 
 })
 
+//reprotPChase
+app.get('/report/productPurchases',function(req,res){
+    var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
+    ' group by title,products.price'+
+    ' order by totalprice desc';
+    db.any(sql)
+        .then(function (data) {
+            res.render('pages/reportPurchase', { reportPChase: data[0] });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        }) 
+
+})
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
