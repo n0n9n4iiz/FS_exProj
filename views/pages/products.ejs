@@ -13,30 +13,30 @@
                 <p class="navbar-brand col-3" >ID</p>
                 <p class="navbar-brand col-3" >TITLE</p>
                 <p class="navbar-brand col-3" >PRICE</p>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler col-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="fa fa-angle-down"></span>
                 </button>
               
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
+                    <li class="nav-item active" style="text-align:center;">
                       <a  class="btn btn-primary" href="/products/addnewform" role="button">Add new</a> <span class="sr-only">(current)</span>
                     </li>           
                   </ul>
                 </div>
               </nav>
-              <table class="table">
+            <!-- <table class="table">
                   <thead>
                      
-    </thead>
+                </thead>  -->
 
-    <tbody id="Sproduct">
+    <div id="Sproduct">
     <% products.forEach(function(product){ %>
-      <tr class="row">
-            <td scope="row" class="col-sm-3 col-3"><%= product.id %></td>
-            <td class="col-sm-3 col-3"><%= product.title %></td>
-            <td class="col-sm-3 col-3">$<%= product.price %></td>
-            <td class="col-sm-3 col-3" style="text-align: center;"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
+     
+            <p scope="row" class="col-sm-3 col-3"><%= product.id %></p>
+            <p class="col-sm-3 col-3"><%= product.title %></p>
+            <p class="col-sm-3 col-3">$<%= product.price %></p>
+            <p class="col-sm-3 col-3" style="text-align: center;"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
                 <!-- Button trigger modal -->
 <a href="<%=product.id%>"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"   >
         Delete
@@ -63,12 +63,12 @@
         </div>
       </div>
             
-        </td>
-      </tr>
+    </p>
+     
     <% }) %>
-    </tbody>
+      </div>
 
-</table>
+<!--</table>-->
 
 <script>
     $(document).ready(function(){
