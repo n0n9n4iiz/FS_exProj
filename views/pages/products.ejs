@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<!--<table class="table">
+<!----><table class="table">
     <thead>
         <tr class="row"">
             <th class="col-3 col-sm-3 ">ID</th>
@@ -10,52 +10,62 @@
             </tr>
           -->
             <nav class="navbar navbar-expand-lg navbar-light">
-                <p class="navbar-brand col-3" >ID</p>
-                <p class="navbar-brand col-3" >TITLE</p>
-                <p class="navbar-brand col-3" >PRICE</p>
-                <button class="navbar-toggler col-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <p class="navbar-brand" >ID</p>
+                <p class="navbar-brand" >TITLE</p>
+                <p class="navbar-brand" >PRICE</p>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="fa fa-angle-down"></span>
                 </button>
               
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active" style="text-align:center;">
+                    <li class="nav-item active">
                       <a  class="btn btn-primary" href="/products/addnewform" role="button">Add new</a> <span class="sr-only">(current)</span>
                     </li>           
                   </ul>
                 </div>
               </nav>
-            <!-- <table class="table">
-                  <thead>
-                     
-                </thead>  -->
+    </thead>
 
-                <div id="Sproduct">
-                    <% products.forEach(function(product){ %>
-            <nav class="navbar navbar-expand-lg navbar-light">
-                    <p scope="row" class="col-sm-3 col-3"><%= product.id %></p>
-                    <p class="col-sm-3 col-3"><%= product.title %></p>
-                    <p class="col-sm-3 col-3">$<%= product.price %></p>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="fa fa-angle-down"></span>
-    
-                    </button>
-                  
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active" style="text-align:center;">
-                          <a name="" id="" class="btn btn-primary " href="/products/addnewform" role="button">Edit</a> <span class="sr-only">(current)</span>
-                          <a name="" id="" class="btn btn-primary " href="/products/addnewform" role="button">Delete</a> <span class="sr-only">(current)</span>
-                        </li>
-               
-                      </ul>
-                    </div>
-                  </nav>
-     
-    <% }) %>
+    <tbody id="Sproduct">
+    <% products.forEach(function(product){ %>
+      <tr class="row">
+            <td scope="row" class="col-sm-3 col-3"><%= product.id %></td>
+            <td class="col-sm-3 col-3"><%= product.title %></td>
+            <td class="col-sm-3 col-3">$<%= product.price %></td>
+            <td class="col-sm-3 col-3" style="text-align: center;"><a class="btn btn-primary" href="/products/<%=product.id%>" role="button">Edit</a>
+                <!-- Button trigger modal -->
+<a href="<%=product.id%>"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"   >
+        Delete
+      </button></a>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm delete</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <a class="btn btn-primary" href="/products/delete/<%= product.id%>" role="button">Delete</a>
+            </div>
+          </div>
+        </div>
       </div>
+            
+        </td>
+      </tr>
+    <% }) %>
+    </tbody>
 
-<!--</table>-->
+</table>
 
 <script>
     $(document).ready(function(){
