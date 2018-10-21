@@ -158,6 +158,23 @@ app.get('/report/productPurchases',function(req,res){
   
 
 })
+//reprotPChaser
+app.get('/report/productPurchaser',function(req,res){
+    var sql = 'select purchases.id,name,sum(quantity) as quantity,sum(purchase_items.price*quantity) as totalprice from purchases inner join purchase_items on purchases.id = purchase_items.purchase_id'+
+    ' group by purchases.id,name'+
+     ' order by totalprice desc'+
+     ' limit 25';
+     db.any(sql)
+         .then(function (data) {
+             res.render('pages/reportPchaser', { reportPChaser: data });
+          
+         })
+         .catch(function (error) {
+             console.log('ERROR:' + error);
+         }) 
+   
+ 
+ })
 
 
 var port = process.env.PORT || 8080;

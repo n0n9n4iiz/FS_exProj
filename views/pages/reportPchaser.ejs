@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+
+<table class="table">
+    <thead>
+    <tr>
+    <th>USER ID</th>
+    <th>NAME</th>
+    <th>QUANTITY</th>
+    <th>TOTAL PRICE</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+        <% reportPChaser.forEach(function(reportPChaser){ %>
+                <td scope="row"><%= reportPChaser.id %></td>
+                <td><%= reportPChaser.name %></td>
+                <td>$<%= reportPChaser.quantity %></td>
+                <td>$<%= reportPChaser.totalprice %></td>
+                
+</tr>
+<%})%>
+
+</tbody>
+</table>
+
+<% include ../partials/footer %>
