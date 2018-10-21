@@ -2,7 +2,7 @@
 
 <!----><table class="table">
     <thead>
-        <tr class="row"">
+        <tr class="row" style="text-align:center;">
             <th class="col-3 col-sm-3 ">ID</th>
             <th class="col-3 col-sm-3">Title</th>
             <th class="col-3 col-sm-3">Price</th>
@@ -13,7 +13,7 @@
 
     <tbody id="Sproduct">
     <% products.forEach(function(product){ %>
-      <tr class="row">
+      <tr class="row" style="text-align:center;">
             <td scope="row" class="col-sm-3 col-3"><%= product.id %></td>
             <td class="col-sm-3 col-3"><%= product.title %></td>
             <td class="col-sm-3 col-3">$<%= product.price %></td>
