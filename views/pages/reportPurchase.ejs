@@ -1,19 +1,26 @@
 <% include ../partials/header %>
 
 
-<table>
+<table class="table">
+    <thead>
     <tr>
     <th>ITEMNAME</th>
     <th>QUANTITY PURCHASES</th>
     <th>AMOUNT</th>
     <th>TOTAL PRICE</th>
 </tr>
+</thead>
+
+<tbody>
 <tr>
         <% reportPChase.forEach(function(reportPChase){ %>
                 <td scope="row"><%= reportPChase.title %></td>
-          <%})%>      
+                <td><%= reportPChase.quantity %></td>
+                <td>$<%= reportPChase.price %></td>
+                <td>$<%= reportPChase.totalprice %></td>
+        <%})%>
 </tr>
-
+</tbody>
 </table>
 
 <% include ../partials/footer %>
