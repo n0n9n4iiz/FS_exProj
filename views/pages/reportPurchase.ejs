@@ -20,13 +20,15 @@
                 <td>$<%= reportPChase.price %></td>
                 <td>$<%= reportPChase.totalprice %></td>          
 </tr>
+<%})%>
+<% totalP.forEach(function(totalP){ %>
     <tr>
         <th>TOTAL</th>
         <th><%= tatalP.Tquantity %></th>
         <th></th>
         <th><%= totalP.Ttotalprice %></th>
     </tr>
-<%})%>
+    <%})%>
 
 </tbody>
 </table>
