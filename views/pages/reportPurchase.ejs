@@ -22,13 +22,14 @@
 </tr>
 <%})%>
 
+<% totalP.forEach(function(totalP){ %>
     <tr>
         <th>TOTAL</th>
         <th><%= totalP.Tquantity %></th>
        
         <th>$<%= totalP.Ttotalprice %></th>
     </tr>
-
+<%})%>
 
 </tbody>
 </table>
