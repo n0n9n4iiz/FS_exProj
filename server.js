@@ -149,7 +149,7 @@ app.get('/report/productPurchases',function(req,res){
     ' group by title,products.price'+
     ' order by title;'+
     ' select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from purchase_items';
-    db.any(sql)
+    db.multi(sql)
         .then(function (data) {
             res.render('pages/reportPurchase', { reportPChase: data[0], totalP:data[1] });
          
