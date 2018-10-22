@@ -31,7 +31,7 @@ app.post('/products/addnew', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-            res.render('pages/index');
+    res.render('pages/index');
 });
 
 app.get('/about', function (req, res) {
@@ -62,7 +62,7 @@ app.get('/products/:pid', function (req, res) {
 
     var pid = req.params.pid;
     var sql = "select * from products where id=" + pid;
-    var time  = moment.utc().toDate();
+    var time = moment.utc().toDate();
     time = moment(time).format('YYYY-MM-DD HH:mm:ss');
     db.any(sql)
         .then(function (data) {
@@ -76,9 +76,9 @@ app.get('/products/:pid', function (req, res) {
 
 app.get('/products/delete/:pid', function (req, res) {
     var pid = req.params.pid;
-    
+
     var sql = 'delete from products where id=' + pid;
-   
+
     db.any(sql)
         .then(function (data) {
             res.redirect('/products');
@@ -108,7 +108,7 @@ app.post('/products/update', function (req, res) {
         })
 
 });
- //user
+//user
 app.get('/users', function (req, res) { //get ดึงข้อมูล 
     var id = req.param('id');
     var sql = 'select * from users';
@@ -144,45 +144,44 @@ app.get('/users/:id', function (req, res) {
 })
 
 //reprotPChase
-app.get('/report/productPurchases',function(req,res){
-   var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id group by title,products.price order by quantity desc;select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from purchase_items';
+app.get('/report/productPurchases', function (req, res) {
+    var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id group by title,products.price order by quantity desc;select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from purchase_items';
     db.multi(sql)
         .then(function (data) {
-            res.render('pages/reportPurchase', { reportPChase : data[0], totalP : data[1] });
-         
+            res.render('pages/reportPurchase', { reportPChase: data[0], totalP: data[1] });
+
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-        }) 
-  
+        })
+
 
 })
 //reprotPChaser
-app.get('/report/productPurchaser',function(req,res){
-    var sql = 'select purchases.id,name,sum(quantity) as quantity,sum(purchase_items.price*quantity) as totalprice from purchases inner join purchase_items on purchases.id = purchase_items.purchase_id'+
-    ' group by purchases.id,name'+
-     ' order by totalprice desc'+
-     ' limit 25';
-     db.any(sql)
-         .then(function (data) {
-             res.render('pages/reportPchaser', { reportPChaser: data });
-          
-         })
-         .catch(function (error) {
-             console.log('ERROR:' + error);
-         }) 
-   
- 
- })
+app.get('/report/productPurchaser', function (req, res) {
+    var sql = 'select purchases.id,name,sum(quantity) as quantity,sum(purchase_items.price*quantity) as totalprice from purchases inner join purchase_items on purchases.id = purchase_items.purchase_id' +
+        ' group by purchases.id,name' +
+        ' order by totalprice desc' +
+        ' limit 25';
+    db.any(sql)
+        .then(function (data) {
+            res.render('pages/reportPchaser', { reportPChaser: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+
+})
 //chart
- app.get('/charttest',function(req,res){
+app.get('/charttest', function (req, res) {
     res.render('/pages/chartReportPChase')
 
- })
+})
 
- 
 
- 
+
+
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {

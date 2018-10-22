@@ -17,7 +17,7 @@
           </div>
     </div>
 <br>
-
+<canvas id="bar-chart" width="800" height="450"></canvas>
 <table class="table table-bordered">
     <thead class="thead-dark">
     <tr class="text-center">
@@ -61,5 +61,50 @@
           });
         });
         </script>
+
+
+<script>
+        <%
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+         
+        var labelss=[]
+        var data=[]
+        var color=[]
+        reportPChase.forEach(function(reportPChase) { 
+            var colors =getRandomColor()
+            labelss.push("'" + reportPChase.title + "'");
+            color.push("'" +colors + "'");
+            data.push(reportPChase.price);
+        }); %>
+        new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+              labels:[<%-labelss%>], 
+              
+              datasets:[{
+                  label: "Products",
+                        backgroundColor: [<%-color%>],   
+                  data:  [<%=data%>]
+                }]
+              
+             
+            },
+            options: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: 'Predicted world population (millions) in 2050'
+              }
+            }
+        });
+        </script>
+
 
 <% include ../partials/footer %>
