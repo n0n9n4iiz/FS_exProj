@@ -177,11 +177,20 @@ app.get('/report/productPurchaser',function(req,res){
    
  
  })
+//chart
+ app.get('/charttest',function(req,res){
+    var sql = 'select title,sum(purchase_items.quantity) as quantity,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
+    'group by title,products.price '+
+    'order by quantity desc;';
+    db.any(sql)
+    .then(function(req,res){
+        res.render('/pages/chartReportPChase',{chartReportPChase : data})
+    })
+    .catch(function(error){
+    console.log('ERROR:' + error);
+    })
 
- /*app.get('/charttest',function(req,res){
-    var sql =
-
- })*/
+ })
 
  
 
