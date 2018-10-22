@@ -53,4 +53,47 @@
           });
         });
         </script>
+
+        <script>
+                <%
+                function getRandomColor() {
+                    var letters = '0123456789ABCDEF'.split('');
+                    var color = '#';
+                    for (var i = 0; i < 6; i++ ) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
+                 
+                var labelss=[]
+                var data=[]
+                var color=[]
+                reportPChaser.forEach(function(reportPChase) { 
+                    var colors =getRandomColor()
+                    labelss.push("'" + reportPChaser.name + "'");
+                    color.push("'" +colors + "'");
+                    data.push(reportPChaser.totalprice);
+                }); %>
+                new Chart(document.getElementById("bar-chart"), {
+                    type: 'line',
+                    data: {
+                      labels:[<%-labelss%>], 
+                      
+                      datasets:[{
+                          label: "Products",
+                                backgroundColor: [<%-color%>],   
+                          data:  [<%=data%>]
+                        }]
+                      
+                     
+                    },
+                    options: {
+                      legend: { display: false },
+                      title: {
+                        display: true,
+                        text: 'Predicted world population (millions) in 2050'
+                      }
+                    }
+                });
+                </script>
 <% include ../partials/footer %>
