@@ -147,7 +147,7 @@ app.get('/users/:id', function (req, res) {
 app.get('/report/productPurchases',function(req,res){
    var sql = 'select title,sum(purchase_items.quantity) as quantity,products.price,sum(purchase_items.price*quantity) as totalprice from products inner join purchase_items on products.id = purchase_items.product_id'+ 
     ' group by title,products.price'+
-    ' order by title;'+
+    ' order by quantity;'+
     ' select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from purchase_items';
     db.multi(sql)
         .then(function (data) {
