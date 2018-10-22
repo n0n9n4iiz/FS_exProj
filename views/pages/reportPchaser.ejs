@@ -68,14 +68,14 @@
                 var labelss=[]
                 var data=[]
                 var color=[]
-                reportPChaser.forEach(function(reportPChase) { 
+                reportPChaser.forEach(function(reportPChaser) { 
                     var colors =getRandomColor()
                     labelss.push("'" + reportPChaser.name + "'");
                     color.push("'" +colors + "'");
                     data.push(reportPChaser.totalprice);
                 }); %>
                 new Chart(document.getElementById("bar-chart"), {
-                    type: 'bar',
+                    type: 'line',
                     data: {
                       labels:[<%-labelss%>], 
                       
