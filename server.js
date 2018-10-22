@@ -151,7 +151,7 @@ app.get('/report/productPurchases',function(req,res){
     'select sum(purchase_items.quantity) as Tquantity,sum(purchase_items.price*quantity) as Ttotalprice from products inner join purchase_items on products.id = purchase_items.product_id;';
     db.any(sql)
         .then(function (data) {
-            res.render('pages/reportPurchase', { reportPChase: data });
+            res.render('pages/reportPurchase', { reportPChase: data[0],totalP:data[1] });
          
         })
         .catch(function (error) {
