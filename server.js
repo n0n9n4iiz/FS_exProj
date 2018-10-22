@@ -31,18 +31,7 @@ app.post('/products/addnew', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-    
-    var sql = ' select * from users;';
-   
-    db.any(sql)//any ดึงข้อมูลทั้งหมด               
-        .then(function (data) { //ทำหลังจากดีงฐานข้อมูล
-            console.log('DATA:' + data);
-            res.render('pages/index', {  users : data});
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-    
+            res.render('pages/index');
 });
 
 app.get('/about', function (req, res) {
