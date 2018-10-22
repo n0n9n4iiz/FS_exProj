@@ -14,7 +14,7 @@
 <tbody id="repPSALE">
 
         <% reportPChase.forEach(function(reportPChase){ %>
-            <tr style="text-align:center"></tr>
+            <tr style="text-align:center">
                 <td scope="row"><%= reportPChase.title %></td>
                 <td><%= reportPChase.quantity %></td>
                 <td>$<%= reportPChase.price %></td>
@@ -22,14 +22,15 @@
 </tr>
 <%})%>
 
-<% totalP.forEach(function(totalP){ %>
     <tr>
         <th>TOTAL</th>
-        <th><%= totalP.Tquantity %></th>
+        <% totalP.forEach(function(totalP){ %>
+        <th scope="row"><%= totalP.Tquantity %></th>
        
         <th>$<%= totalP.Ttotalprice %></th>
+        <%})%>
     </tr>
-<%})%>
+
 
 </tbody>
 </table>
