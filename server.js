@@ -173,11 +173,7 @@ app.get('/report/productPurchaser', function (req, res) {
 
 
 })
-//chart
-app.get('/charttest', function (req, res) {
-    res.render('/pages/chartReportPChase')
 
-})
 
 
 
