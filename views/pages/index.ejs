@@ -15,27 +15,6 @@
           </p>
      </div>
     </div>
-    <table class="table">
-
-            <thead>
-                <tr style="text-align:center">
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-        
-            <tbody id="Susers">
-            <% users.forEach(function(user){ %>
-              <tr style="text-align:center">
-                    <td scope="row"><%=user.id%></td>
-                    <td><%=user.email%></td>
-                    <td>$<%=user.password%></td>
-                </tr>
-            <% }) %>
-            </tbody>
-        
-        </table>
     <!--<script>
             function getdata(){
              var output = 
