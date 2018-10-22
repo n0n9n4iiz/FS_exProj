@@ -4,18 +4,18 @@
 
     <thead>
         <tr style="text-align:center">
-            <th class="col-sm-4 col-4">ID</th>
-            <th class="col-sm-4 col-4">Email</th>
-            <th class="col-sm-4 col-4">Password</th>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Password</th>
         </tr>
     </thead>
 
     <tbody id="Susers">
     <% users.forEach(function(user){ %>
       <tr style="text-align:center">
-            <td scope="row"  class="col-sm-4 col-4"><%=user.id%></td>
-            <td class="col-sm-4 col-4"><%=user.email%></td>
-            <td class="col-sm-4 col-4">$<%=user.password%></td>
+            <td scope="row"><%=user.id%></td>
+            <td><%=user.email%></td>
+            <td>$<%=user.password%></td>
         </tr>
     <% }) %>
     </tbody>
